@@ -14,13 +14,25 @@ class Login extends BaseController
         $this->ionauth = new \IonAuth\Libraries\IonAuth();
         helper(['form', 'url']);
         $this->session = \Config\Services::session();
-        $this->session->start();
     }
 
     public function index()
 	{
-		return view('inicio/vinicio_sesion');
-		return view('vformulario');
+	    if($this->ionauth->loggedIn())
+	    {
+	        //Redireccion a la pagina Inicio
+	        echo "Sesion iniciada";
+            return redirect()->to('inicio');
+        }
+	    else{
+
+	        //Redireccion a la pagina de login
+            return view('inicio/vinicio_sesion');
+            return view('vformulario');
+
+
+        }
+
 	}
 
 	public function validar()
@@ -32,8 +44,12 @@ class Login extends BaseController
         if( $this->ionauth->login($identidad, $password, false) )
         {
             echo 'login';
+            $this->session->start();
+            return redirect()->to('inicio');
+
         }else{
-            echo 'no login';
+            //echo 'no login';
+            redirect('/');
         }
 
 
