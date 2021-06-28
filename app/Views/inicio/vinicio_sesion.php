@@ -66,11 +66,11 @@
 					font-weight:Bold;
 					font-size:12px;
 				}
-				#N_usuario {
+				#identidad {
 					width:100%;
 					background-color:#e6edf7;
 				}
-				#Contraseña {
+				#password {
 					width: 100%;
 					background-color:#e6edf7;
 				}
@@ -88,7 +88,7 @@
 		<body>
 			<div>
 				<div id="Cabecera">
-					<img src="<?php echo base_url().'/app/Views/imagenes/LogoCD.jpg';?>" alt="Logo CD">
+					<img src="<?php echo base_url().'/assets/img/logo/LogoCD.jpg';?>" alt="Logo CD">
 					
 					<h3 id="Título_cabecera"> Elecciones subnacionales 2021 - Bolivia </h3>
 				</div>
@@ -103,19 +103,20 @@
 
 				<div id="Caja_secundaria" class="contenedor">	
 					<h3 id="Título_secundario"> Inicio de sesión </h3>
-					<form>
-						<label for="N_usuario" class="form-group"> Nombre de usuario </label> 
+<!--					<form>-->
+                    <?php echo form_open('login/validar'); ?>
+						<label for="identidad" class="form-group"> Nombre de usuario </label>
 						<span class="red"> * </span>
 						<br>
-						<input type="text" id="N_usuario" name="N_usuario" required>
+						<input type="text" id="identidad" name="identidad" required>
 						<br><br>
-						<label for="Contraseña" class="form-group"> Contraseña </label>
+						<label for="password" class="form-group"> Contraseña </label>
 						<span class="red"> * </span>
 						<br>
-						<input type="password" id="Contraseña" name="Contraseña" required>
+						<input type="password" id="password" name="password" required>
 						<br><br>
 						<input type="submit" id="INICIAR" value="INICIAR SESIÓN">
-					</form>
+					<?php echo form_close(); ?>
 				</div>
 			</div>
 		</body>
